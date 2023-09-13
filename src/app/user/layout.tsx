@@ -1,6 +1,6 @@
 import {ReaderLayout} from "@/components/layouts/ReaderLayout";
 
-export default function SearchLayout({children}: {
+export default function UserLayout({children}: {
     children: React.ReactNode
 }) {
     return (
