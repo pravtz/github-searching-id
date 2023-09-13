@@ -5,7 +5,7 @@ import GlobalStyles from "@/styles/GlobalStyles";
 import {LayoutBreakpoint} from "@/components/layouts/LayoutBreakpoint";
 
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter'})
 
 export const metadata: Metadata = {
   title: 'Github Searching Id',
