@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     --colorText: #FCFCFC;
     --colorTextProminently: #31AAAA;
     --colorTextNotHighlighted: #B4ADC7;
-    
+
     --border-radius: 8px;
     
   //  breakpoints
@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
     --breakpoint-xl: "1280px";
     --breackpoint-2xl: "1536px";
   }
+
   
   * {
     box-sizing: border-box;
