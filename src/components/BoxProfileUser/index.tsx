@@ -15,12 +15,12 @@ export const BoxProfileUser = ({name,login,location,id, avatarUrl}: BoxProfileUs
     return (
         <Wrapper>
             <ImageUser>
-                <Image src={avatarUrl.src} alt={avatarUrl.alt} width={82} height={82}/>
+                <Image src={avatarUrl.src} alt={avatarUrl.alt} width={82} height={82} style={{borderRadius:"8px"}}/>
             </ImageUser>
             <Content>
                 <Group>
                     <Name>{name}</Name>
-                    <LoginAndId>{login}•{id}</LoginAndId>
+                    <LoginAndId>{login} • <span>ID: {id}</span></LoginAndId>
                 </Group>
                 <Location>{location}</Location>
             </Content>

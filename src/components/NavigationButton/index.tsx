@@ -6,12 +6,13 @@ type NavigationButtonType = {
     name: string
     direction: "left"|"right"
     disabled?: boolean
+    onclick: ()=>void
 
 }
 
-export const NavigationButton = ({name, direction, disabled = false}:NavigationButtonType) => {
+export const NavigationButton = ({name, onclick , direction, disabled = false}:NavigationButtonType) => {
     return (
-            <ButtonNavigation disabled={disabled} type={"button"}>
+            <ButtonNavigation disabled={disabled} onClick={onclick} type={"button"}>
                 <Wrapper>
                     {direction === "left" ?? <ChevronLeft />}
                         {name}

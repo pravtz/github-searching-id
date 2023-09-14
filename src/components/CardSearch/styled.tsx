@@ -36,7 +36,7 @@ export const LoginText = styled.p`
   font-weight: lighter;
   
 `
-export const GroupIconAndText = styled.p`
+export const GroupIconAndText = styled.div`
   display: flex;
   align-items: center;
   gap: 2px;

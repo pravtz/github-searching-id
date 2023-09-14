@@ -6,16 +6,19 @@ import {NavigationButton} from "./index";
 describe('Navigation Button', () => {
     const handleClick = jest.fn()
     it('renders button component main', () => {
-        render(<NavigationButton name="any" direction={"left"}  />)
+        render(<NavigationButton onclick={handleClick} name="any" direction={"left"}  />)
         const buttonPrimary = screen.getByRole('button', {name: /any/i})
         expect(buttonPrimary).toHaveTextContent("any")
-        // screen.logTestingPlaygroundURL()
+
     })
 
     it("should calls onClick prop when clicked", () => {
-        render(<NavigationButton   name="any" direction={"right"}/>)
+        render(<NavigationButton  onclick={handleClick}  name="any" direction={"right"}/>)
+        //screen.logTestingPlaygroundURL()
 
-        fireEvent.click(screen.getByRole('button'))
+        const button = screen.getByRole('button', { name: /any/i })
+
+        fireEvent.click(button)
         expect(handleClick).toHaveBeenCalledTimes(1)
     })
 })
