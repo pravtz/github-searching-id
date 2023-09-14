@@ -15,7 +15,7 @@ export const BoxProfileUser = ({name,login,location,id, avatarUrl}: BoxProfileUs
     return (
         <Wrapper>
             <ImageUser>
-                <Image src={avatarUrl.src} alt={avatarUrl.alt}/>
+                <Image src={avatarUrl.src} alt={avatarUrl.alt} width={82} height={82}/>
             </ImageUser>
             <Content>
                 <Group>
