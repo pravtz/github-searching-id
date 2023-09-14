@@ -8,7 +8,7 @@ describe('Navigation Button', () => {
     it('renders button component main', () => {
         render(<NavigationButton name="any" direction={"left"}  />)
         const buttonPrimary = screen.getByRole('button', {name: /any/i})
-        expect(buttonPrimary).toHaveTextContent("anything")
+        expect(buttonPrimary).toHaveTextContent("any")
         // screen.logTestingPlaygroundURL()
     })
 
