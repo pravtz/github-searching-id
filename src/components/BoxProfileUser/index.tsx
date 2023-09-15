@@ -1,7 +1,8 @@
 import {Wrapper, Content, Name, ImageUser, Location, LoginAndId, Group} from './styled'
 import Image from "next/image";
 
-type BoxProfileUserType = {
+
+export type BoxProfileUserType = {
     name: string
     login: string
     id: number

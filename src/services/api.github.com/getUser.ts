@@ -38,7 +38,7 @@ type res = {
 }
 
 export async function getUser(username: string, revalidateTime: number = SuggestionRevalidate){
-    const data = await fetchWrapperGithub<res>(`https://api.github.com/users/${username}`,{
+    const data = await fetchWrapperGithub<res>(`users/${username}`,{
         headers: {
             'X-GitHub-Api-Version': '2022-11-28'
         },

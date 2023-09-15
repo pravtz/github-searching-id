@@ -1,7 +1,7 @@
 import {Date, Description, GroupDate, Language, Title, Wrapper} from "@/components/BoxDisplayUserRepositories/styled";
 import Link from 'next/link'
 
-type BoxDisplayUserRepositoriesType = {
+export type BoxDisplayUserRepositoriesType = {
     title: string
     description: string
     language: string

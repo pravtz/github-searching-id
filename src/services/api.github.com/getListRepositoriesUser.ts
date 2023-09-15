@@ -1,8 +1,9 @@
 import {fetchWrapperGithub} from "@/lib/fetchWrapperGithub";
+import {json} from "stream/consumers";
 
 const SuggestionRevalidate = 60 * 60 * 24 * 7 //week
 
-type res = {
+export type RepositoriesDataType = {
     id: number,
     node_id: string,
     name: string,
@@ -103,7 +104,7 @@ type res = {
     default_branch: string
 }
 export async function getListRepositoriesUser(user: string, revalidateTime: number = SuggestionRevalidate){
-    const data = await fetchWrapperGithub<res>(`https://api.github.com/users/${user}/repos?sort=stars&direction=desc&per_page=3&page=1`,{
+    const data = await fetchWrapperGithub<RepositoriesDataType>(`users/${user}/repos?sort=stars&direction=desc&per_page=4&page=1`,{
         headers: {
             'X-GitHub-Api-Version': '2022-11-28'
         },
