@@ -9,15 +9,10 @@ export type DataFullUserProfile = BoxProfileUserType & {
     amountPublicRepos: number
 }
 
-
-
-
 export default async function Page({ params }: { params: { username: string } }) {
 
     const data = await getUser(params.username)
-    const dataRepositories = await  getListRepositoriesUser(params.username)
-
-    console.log(dataRepositories)
+    const dataRepositories: any = await  getListRepositoriesUser(params.username)
 
     const user:DataFullUserProfile ={
         name: data.name,
@@ -31,8 +26,6 @@ export default async function Page({ params }: { params: { username: string } })
         amountPublicRepos: data.public_repos,
         followers: data.followers
     }
-
-
 
     return (
         <ScreenUser userData={user} dataRepositories={dataRepositories}/>

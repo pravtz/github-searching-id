@@ -3,9 +3,11 @@
 import {GroupCards, Wrapper} from "./styled";
 import {NavigationLink} from "@/components/NavigationLink";
 import {InputSearch} from "@/components/InputSearch";
-import {getListUsers} from "@/services/api.github.com/getListUsers";
+import {getListUsers, ListUsers} from "@/services/api.github.com/getListUsers";
 import {MenuLine} from "@/components/MenuLine";
 import {CardSearch} from "@/components/CardSearch";
+import {useState} from "react";
+import {getUser, GetUserType} from "@/services/api.github.com/getUser";
 
 
 
@@ -44,20 +46,31 @@ const mocktest = [
 ]
 
 export const ScreenSearch = () => {
+    const [data,setData] = useState<ListUsers | null>(null)
+    const [data2, setData2] = useState<GetUserType[]>()
     const handlerSearch = async (data: string) => {
-        //const dataAll = await getListUsers(data,1,3,"desc", "joined")
+        const dataAll = await getListUsers(data,1,2,"desc", "joined")
+        const result:any = []
+        dataAll.items.map(async (item)=>{
+            const value = await getUser(item.login)
+            result.push(value)
+        })
 
+        setData2(result)
+        setData(dataAll)
     }
-    const arrayRecentSearches = mocktest
-    const arrayCurrentSearches = mocktest
+    console.log(data2)
 
-    const amountCards = arrayRecentSearches.length
+    const arrayRecentSearches = mocktest
+    const arrayCurrentSearches = data2
+    const totalCurrentCards = data?.total_count
+    const totalRecentCards = arrayRecentSearches.length
     return (
         <Wrapper>
             <NavigationLink name="Sair" href="/" />
             <InputSearch handlerSearchUsers={handlerSearch}/>
 
-            <MenuLine isEmpty={!amountCards} title={"Buscas Recentes"}>
+            <MenuLine isEmpty={!totalRecentCards} title={"Buscas Recentes"}>
                 <GroupCards >
                 {arrayRecentSearches.map((item,index)=>{
                     return (
@@ -67,11 +80,11 @@ export const ScreenSearch = () => {
                 </GroupCards>
             </MenuLine>
 
-            <MenuLine isEmpty={!amountCards} title={"Buscas"} isStartOpen={true}>
+            <MenuLine isEmpty={!totalCurrentCards} title={"Buscas"} isStartOpen={true}>
                 <GroupCards >
-                    {arrayCurrentSearches.map((item,index)=>{
+                    {arrayCurrentSearches?.map((item,index)=>{
                         return (
-                            <CardSearch key={index} name={item.name} login={item.login} location={item.location} image={item.image}/>
+                            <CardSearch key={index} name={item.name} login={item.login} location={item.location} image={{src:item.avatar_url,alt:item.login}}/>
                         )
                     })}
                 </GroupCards>

@@ -2,7 +2,7 @@ import {fetchWrapperGithub} from "@/lib/fetchWrapperGithub";
 
 const SuggestionRevalidate = 60 * 60 * 24 * 7 //week
 
-type res = {
+export type GetUserType = {
     login: string,
     id: number,
     node_id: string,
@@ -38,7 +38,7 @@ type res = {
 }
 
 export async function getUser(username: string, revalidateTime: number = SuggestionRevalidate){
-    const data = await fetchWrapperGithub<res>(`users/${username}`,{
+    const data:GetUserType = await fetchWrapperGithub<GetUserType>(`users/${username}`,{
         headers: {
             'X-GitHub-Api-Version': '2022-11-28'
         },

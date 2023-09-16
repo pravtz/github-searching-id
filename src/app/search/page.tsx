@@ -1,6 +1,7 @@
 import {ScreenSearch} from "@/components/ScreenSearch";
+import {getListUsers} from "@/services/api.github.com/getListUsers";
 
-export default function Page() {
+export default async function Page() {
 
     return (
         <ScreenSearch />
