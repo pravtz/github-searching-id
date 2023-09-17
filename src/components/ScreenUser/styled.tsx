@@ -30,3 +30,4 @@ export const GroupDisplayUserData = styled.div`
   align-items: center;
   gap: 14px;
 `
+

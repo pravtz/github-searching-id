@@ -15,7 +15,7 @@ type CardSearchType = {
 
 export const CardSearch = ({name, login, location, image: {src, alt}}: CardSearchType) => {
     return (
-        <Link href={`/user/${login}`}>
+        <Link href={`/user/${login}/1`}>
             <Wrapper>
                 <Avatar>
                     <Image src={src} alt={alt} width={48} height={48} style={{borderRadius: "8px"}}/>
