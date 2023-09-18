@@ -3,7 +3,6 @@
 import {ButtonTitle, Content, GroupTitle, IconChevron, TitleMenu, Wrapper} from "@/components/MenuLine/styled";
 import {ChevronDown} from "lucide-react";
 import {useState} from "react";
-import {boolean} from "zod";
 
 type MenuLineType = {
     children:React.ReactNode,

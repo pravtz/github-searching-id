@@ -5,6 +5,7 @@ import GlobalStyles from "@/styles/GlobalStyles";
 import {LayoutBreakpoint} from "@/components/layouts/LayoutBreakpoint";
 
 
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter'})
 
 export const metadata: Metadata = {
@@ -20,12 +21,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <StyledComponentsRegistry>
-          <GlobalStyles />
-            <LayoutBreakpoint>
-                {children}
-            </LayoutBreakpoint>
-      </StyledComponentsRegistry>
+
+          <StyledComponentsRegistry>
+              <GlobalStyles />
+              <LayoutBreakpoint>
+                  {children}
+              </LayoutBreakpoint>
+          </StyledComponentsRegistry>
+
+
       </body>
     </html>
   )

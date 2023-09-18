@@ -1,8 +1,5 @@
 import {ScreenUser} from "@/components/ScreenUser";
-import {getUser} from "@/services/api.github.com/getUser";
 import {BoxProfileUserType} from "@/components/BoxProfileUser";
-import {getListRepositoriesUser} from "@/services/api.github.com/getListRepositoriesUser";
-import {BoxDisplayUserRepositoriesType} from "@/components/BoxDisplayUserRepositories";
 import {getAxiosUser, GetUserAxiosType} from "@/services/api.axios.github.com/getUser";
 import {getAxiosRepositories, RepositoriesDataAxiosType} from "@/services/api.axios.github.com/getRepositories";
 

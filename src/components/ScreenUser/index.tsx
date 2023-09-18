@@ -16,6 +16,7 @@ import {RepositoriesDataType} from "@/services/api.github.com/getListRepositorie
 import {FormatDate} from "@/helper/FormatDate";
 import {Pagination} from "@/components/Pagination";
 
+
 type ScreenUserType = {
     userData: DataFullUserProfile
     dataRepositories: RepositoriesDataType[]
@@ -23,6 +24,10 @@ type ScreenUserType = {
 }
 
 export const ScreenUser = async ({userData, dataRepositories, page}:ScreenUserType,) => {
+
+        localStorage.setItem('LOCAL',JSON.stringify([userData]))
+
+
 
     return (
         <Wrapper>
