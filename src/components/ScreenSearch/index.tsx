@@ -15,12 +15,12 @@ export const ScreenSearch = () => {
     const [dataUsers, setDataUsers] = useState<GetUserAxiosType[]>()
     const [currentPage, setCurrentPage] = useState<number>(1)
 
-    const itemA: any = window.localStorage.getItem('LOCAL')
-    const resultLocal = JSON.parse(itemA)
+    // const itemA: any = window.localStorage.getItem('LOCAL')
+    // const resultLocal = JSON.parse(itemA)
 
     const usersSearchList = useCallback(async (query: string, currentPag: number) => {
 
-        await getSearchUser(query, currentPag, 2, "desc", "joined")
+        await getSearchUser(query, currentPag, 3, "desc", "joined")
             .then(async (response) => {
                 const result = response.data
                 setDataListSearchUser(result)
@@ -47,7 +47,7 @@ export const ScreenSearch = () => {
         await usersSearchList(data, currentPage)
     }
 
-    const arrayRecentSearches = resultLocal
+    // const arrayRecentSearches = resultLocal
     const arrayCurrentSearches = dataUsers
     const totalCurrentCards = dataListSearchUser?.total_count
     const totalRecentCards = 2
@@ -56,16 +56,16 @@ export const ScreenSearch = () => {
             <NavigationLink name="Sair" href="/"/>
             <InputSearch handlerSearchUsers={handlerSearch}/>
 
-            <MenuLine isEmpty={!totalRecentCards} title={"Buscas Recentes"}>
-                <GroupCards>
-                    {arrayRecentSearches.map((item: any) => {
-                        return (
-                            <CardSearch key={item.id} name={item.name} login={item.login} location={item.location}
-                                        image={{src: item.avatar_url, alt: item.login}}/>
-                        )
-                    })}
-                </GroupCards>
-            </MenuLine>
+            {/*<MenuLine isEmpty={!totalRecentCards} title={"Buscas Recentes"}>*/}
+            {/*    <GroupCards>*/}
+            {/*        {arrayRecentSearches.map((item: any) => {*/}
+            {/*            return (*/}
+            {/*                <CardSearch key={item.id} name={item.name} login={item.login} location={item.location}*/}
+            {/*                            image={{src: item.avatar_url, alt: item.login}}/>*/}
+            {/*            )*/}
+            {/*        })}*/}
+            {/*    </GroupCards>*/}
+            {/*</MenuLine>*/}
 
             <MenuLine isEmpty={!totalCurrentCards} title={"Buscas"} isStartOpen={true}>
                 <GroupCards>
