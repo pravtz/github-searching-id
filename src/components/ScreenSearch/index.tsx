@@ -14,16 +14,13 @@ export const ScreenSearch = () => {
     const [dataListSearchUser, setDataListSearchUser] = useState<ListUsersAxiosType>()
     const [dataUsers, setDataUsers] = useState<GetUserAxiosType[]>()
     const [currentPage, setCurrentPage] = useState<number>(1)
-    const perPage: number = 2
 
-    const itemA: any = localStorage.getItem('LOCAL')
+    const itemA: any = window.localStorage.getItem('LOCAL')
     const resultLocal = JSON.parse(itemA)
-    console.log('itemA', resultLocal)
-
 
     const usersSearchList = useCallback(async (query: string, currentPag: number) => {
-        console.log("passei por aqui", currentPag)
-        await getSearchUser(query, currentPag, perPage, "desc", "joined")
+
+        await getSearchUser(query, currentPag, 2, "desc", "joined")
             .then(async (response) => {
                 const result = response.data
                 setDataListSearchUser(result)
@@ -35,8 +32,8 @@ export const ScreenSearch = () => {
                     for await(const res of result.items) {
                         await getAxiosUser(res.login).then(
                             (response) => {
-                                const resultmap = response.data
-                                arr.push(resultmap)
+                                const result = response.data
+                                arr.push(result)
                             }
                         )
                     }
