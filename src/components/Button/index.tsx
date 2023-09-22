@@ -1,5 +1,4 @@
-'use client'
-import {ButtonMain} from "@/components/Button/styled";
+import styled from "./styled.module.sass";
 
 
 type ButtonType = {
@@ -10,8 +9,8 @@ type ButtonType = {
 export const Button = ({label, onclick}:ButtonType) => {
 
     return (
-        <ButtonMain onClick={onclick}  type={"button"}>
+        <button className={styled.buttonMain} onClick={onclick}  type={"button"}>
             {label}
-        </ButtonMain>
+        </button>
     )
 }
