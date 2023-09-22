@@ -1,4 +1,4 @@
-import {Wrapper, Content, Name, ImageUser, Location, LoginAndId, Group} from './styled'
+import styled from './styled.module.sass'
 import Image from "next/image";
 
 
@@ -14,17 +14,17 @@ export type BoxProfileUserType = {
 }
 export const BoxProfileUser = ({name,login,location,id, avatarUrl}: BoxProfileUserType) => {
     return (
-        <Wrapper>
-            <ImageUser>
+        <section className={styled.wrapper}>
+            <figure>
                 <Image src={avatarUrl.src} alt={avatarUrl.alt} width={82} height={82} style={{borderRadius:"8px"}}/>
-            </ImageUser>
-            <Content>
-                <Group>
-                    <Name>{name}</Name>
-                    <LoginAndId>{login} • <span>ID: {id}</span></LoginAndId>
-                </Group>
-                <Location>{location}</Location>
-            </Content>
-        </Wrapper>
+            </figure>
+            <div className={styled.content}>
+                <div className={styled.loginAndId}>
+                    <h1 className={styled.name}>{name}</h1>
+                    <p>{login} • <span>ID: {id}</span></p>
+                </div>
+                <p className={styled.location}>{location}</p>
+            </div>
+        </section>
     )
 }
