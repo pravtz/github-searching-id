@@ -1,4 +1,4 @@
-import {Wrapper, Avatar, Content, NameText, LoginText, GroupIconAndText} from "@/components/CardSearch/styled";
+import styled from "./styled.module.sass"
 import Image from 'next/image'
 import {MapPin} from "lucide-react";
 import Link from "next/link";
@@ -16,19 +16,19 @@ type CardSearchType = {
 export const CardSearch = ({name, login, location, image: {src, alt}}: CardSearchType) => {
     return (
         <Link href={`/user/${login}/1`}>
-            <Wrapper>
-                <Avatar>
+            <section className={styled.wrapper}>
+                <figure className={styled.avatar}>
                     <Image src={src} alt={alt} width={48} height={48} style={{borderRadius: "8px"}}/>
-                </Avatar>
-                <Content>
-                    <NameText>{name}</NameText>
-                    <LoginText>{login}</LoginText>
-                    <GroupIconAndText>
+                </figure>
+                <div className={styled.content}>
+                    <h2 className={styled.nameText}>{name}</h2>
+                    <p className={styled.loginText}>{login}</p>
+                    <div className={styled.groupIconAndText}>
                         <MapPin size={10} color={"#797979"}/>
-                        <LoginText>{location}</LoginText>
-                    </GroupIconAndText>
-                </Content>
-            </Wrapper>
+                        <p className={styled.locationText}>{location}</p>
+                    </div>
+                </div>
+            </section>
         </Link>
 
     )
