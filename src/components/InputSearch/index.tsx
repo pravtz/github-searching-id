@@ -1,34 +1,35 @@
-'use client'
-import {Wrapper, InputSearchText, GroupSearchText, ButtonForm} from "@/components/InputSearch/styled";
-import {useState} from "react";
+    'use client'
+    import {useState} from "react";
+    import styled from './styled.module.sass'
 
-type InputSearchType = {
-    handlerSearchUsers: (data: string) => void
-}
-
-export const InputSearch = ({handlerSearchUsers}:InputSearchType ) => {
-    const [data, setData] = useState<string>('')
-
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-        handlerSearchUsers(data)
+    type InputSearchType = {
+        handlerSearchUsers: (data: string) => void
     }
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setData(event.target.value)
-    }
+    export const InputSearch = ({handlerSearchUsers}:InputSearchType ) => {
+        const [data, setData] = useState<string>('')
 
-    return (
-        <Wrapper>
-            <GroupSearchText onSubmit={handleSubmit}>
-                <InputSearchText
-                    type="text"
-                    id="searchData"
-                    placeholder='Digite o username'
-                    onChange={handleChange}
-                />
-                <ButtonForm type={"submit"} >Buscar</ButtonForm>
-            </GroupSearchText>
-        </Wrapper>
-    )
-}
+        const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+            event.preventDefault()
+            handlerSearchUsers(data)
+        }
+
+        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+            setData(event.target.value)
+        }
+
+        return (
+            <section className={styled.Wrapper}>
+                <form className={styled.GroupSearchText} onSubmit={handleSubmit}>
+                    <input
+                        className={styled.InputSearchText}
+                        type="text"
+                        id="searchData"
+                        placeholder='Digite o username'
+                        onChange={handleChange}
+                    />
+                    <button className={styled.ButtonForm} type={"submit"} >Buscar</button>
+                </form>
+            </section>
+        )
+    }
