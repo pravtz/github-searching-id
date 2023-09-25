@@ -1,0 +1,45 @@
+
+.Wrapper
+  display: block
+  width: 100%
+  text-align: right
+
+.wrapper--isEmpty
+  display: none
+
+
+.ButtonTitle
+  background: transparent
+  border: none
+  color: var(--colorText)
+  font-family: var(--font-inter)
+
+.GroupTitle
+  display: flex
+  align-items: center
+  gap: 4px
+
+
+.TitleMenu
+  text-align: right
+  font-size: 12px
+  width: 100%
+
+.IconChevron
+  transform: rotate(0)
+  transition: all 0.1s ease
+
+.IconChevron--isTurned
+  transform: rotate(90deg)
+
+
+.Content
+  border-top: 1px solid var(--colorBorder)
+  text-align: left
+  padding-top: 16px
+  overflow: hidden
+  transition: height 0.1s ease
+  height: 1px
+
+.Content--isOpen
+  height: 238px
