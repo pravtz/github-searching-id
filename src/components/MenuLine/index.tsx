@@ -14,16 +14,16 @@ type MenuLineType = {
 export const MenuLine = ({children, title, isEmpty, isStartOpen= false}: MenuLineType) => {
     const [open, setOpen] = useState<boolean>(isStartOpen)
     return (
-        <section className={isEmpty ? styled.wrapperIsEmpty : styled.Wrapper}>
+        <section className={isEmpty ? styled["wrapper--isEmpty"] : styled.Wrapper}>
             <button className={styled.ButtonTitle} onClick={()=> setOpen(!open)}>
                 <div className={styled.GroupTitle}>
                     <h3 className={styled.TitleMenu}>{title}</h3>
-                    <div className={!open ? styled.IconChevronIsTurned : styled.IconChevron}>
+                    <div className={!open ? styled['IconChevron--isTurned'] : styled.IconChevron}>
                         <ChevronDown size={20} color="#787878" />
                     </div>
                 </div>
             </button>
-            <div className={open ? styled.ContentIsOpen : styled.Content}>
+            <div className={open ? styled["Content--isOpen"] : styled.Content}>
                 {children}
             </div>
         </section>

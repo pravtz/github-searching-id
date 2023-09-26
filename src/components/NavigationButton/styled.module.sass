@@ -1,19 +1,17 @@
-
 .Wrapper
   display: flex
   background-color: transparent
   align-items: center
-  cursor: ${(props) => props.isDisabled ? "not-allowed" : "pointer"}
-  opacity: ${(props) => props.isDisabled ? "0.1" : "0.7"}
+  cursor: pointer
+  opacity: 0.7
   &:hover
-    opacity: ${(props) => props.isDisabled ? "0.1" : "1"}
-
+    opacity: 1
   &:disabled
     opacity: 0.4
 
 .Wrapper--isDisabled
   opacity: 0.1
-
+  cursor: not-allowed
   &:hover
     opacity: 0.1
 
@@ -21,7 +19,3 @@
   color: var(--colortext)
   background-color: transparent
   border: none
-
-
-
-`
