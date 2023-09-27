@@ -1,7 +1,6 @@
+import '../styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import StyledComponentsRegistry from '../lib/registry'
-import GlobalStyles from "@/styles/GlobalStyles";
 import {LayoutBreakpoint} from "@/components/layouts/LayoutBreakpoint";
 
 
@@ -21,15 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-
-          <StyledComponentsRegistry>
-              <GlobalStyles />
               <LayoutBreakpoint>
                   {children}
               </LayoutBreakpoint>
-          </StyledComponentsRegistry>
-
-
       </body>
     </html>
   )

@@ -1,8 +1,6 @@
-'use client'
-
-import {Wrapper, Content} from "@/components/NavigationLink/styled";
 import Link from "next/link";
 import {ChevronLeft} from 'lucide-react'
+import styles from './styled.module.sass'
 
 type NavigationLinkType = {
     name: string
@@ -10,14 +8,14 @@ type NavigationLinkType = {
 }
 export const NavigationLink = ({name, href}: NavigationLinkType) => {
     return (
-        <Wrapper>
+        <div>
             <Link href={href}>
-                <Content>
+                <div className={styles.content}>
                     <ChevronLeft size={24}  />
                     <p>{name}</p>
-                </Content>
+                </div>
             </Link>
 
-        </Wrapper>
+        </div>
     )
 }

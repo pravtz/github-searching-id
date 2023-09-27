@@ -1,8 +1,5 @@
-'use client'
-
-import {Wrapper} from "@/components/PaginateSearch/styled";
 import {NavigationButton} from "@/components/NavigationButton";
-
+import styled from './styled.module.sass'
 
 type PaginateSearchType = {
     totalItems: any
@@ -16,10 +13,10 @@ export const PaginateSearch = ({totalItems, currentPage,perPage, onclickNextPage
 
 
     return (
-        <Wrapper>
+        <div className={styled.Wrapper}>
             <NavigationButton name={"Anterior"} direction={"left"} onclick={onclickPreviousPage}/>
             <p>{currentPage}/{Math.round(totalPage)}</p>
             <NavigationButton name={"Próxima"} direction={"right"} onclick={onclickNextPage}/>
-        </Wrapper>
+        </div>
     )
 }

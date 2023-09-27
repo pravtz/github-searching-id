@@ -1,6 +1,5 @@
 'use client'
-
-import {GroupCards, Wrapper} from "./styled";
+import styled from './styled.module.sass'
 import {NavigationLink} from "@/components/NavigationLink";
 import {InputSearch} from "@/components/InputSearch";
 import {MenuLine} from "@/components/MenuLine";
@@ -52,33 +51,33 @@ export const ScreenSearch = () => {
     const totalCurrentCards = dataListSearchUser?.total_count
     const totalRecentCards = 2
     return (
-        <Wrapper>
+        <div className={styled.Wrapper}>
             <NavigationLink name="Sair" href="/"/>
             <InputSearch handlerSearchUsers={handlerSearch}/>
 
             {/*<MenuLine isEmpty={!totalRecentCards} title={"Buscas Recentes"}>*/}
-            {/*    <GroupCards>*/}
+            {/*    <div className={styled.GroupCards}>*/}
             {/*        {arrayRecentSearches.map((item: any) => {*/}
             {/*            return (*/}
             {/*                <CardSearch key={item.id} name={item.name} login={item.login} location={item.location}*/}
             {/*                            image={{src: item.avatar_url, alt: item.login}}/>*/}
             {/*            )*/}
             {/*        })}*/}
-            {/*    </GroupCards>*/}
+            {/*    </div>*/}
             {/*</MenuLine>*/}
 
             <MenuLine isEmpty={!totalCurrentCards} title={"Buscas"} isStartOpen={true}>
-                <GroupCards>
+                <div className={styled.GroupCards}>
                     {arrayCurrentSearches != undefined && arrayCurrentSearches.map((item) => {
                         return (
                             <CardSearch key={item.id} name={item.name} login={item.login} location={item.location}
                                         image={{src: item.avatar_url, alt: item.login}}/>
                         )
                     })}
-                </GroupCards>
+                </div>
 
             </MenuLine>
 
-        </Wrapper>
+        </div>
     )
 }

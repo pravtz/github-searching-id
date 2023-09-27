@@ -1,12 +1,6 @@
 'use client'
 
-import {
-    Content,
-    Wrapper,
-    GroupDisplayUserData,
-    Line,
-    ContentRepository,
-} from "@/components/ScreenUser/styled";
+import styled from './styled.module.sass'
 import {NavigationLink} from "@/components/NavigationLink";
 import {BoxProfileUser} from "@/components/BoxProfileUser";
 import {BoxDisplayUserData} from "@/components/BoxDisplayUserData";
@@ -27,9 +21,9 @@ export const ScreenUser = async ({userData, dataRepositories, page}:ScreenUserTy
         localStorage.setItem('LOCAL',JSON.stringify([userData]))
 
     return (
-        <Wrapper>
+        <div className={styled.Wrapper}>
             <NavigationLink name="Voltar" href="/search" />
-            <Content>
+            <section className={styled.Content}>
                 <BoxProfileUser
                     name={userData.name}
                     login={userData.login}
@@ -40,12 +34,12 @@ export const ScreenUser = async ({userData, dataRepositories, page}:ScreenUserTy
                         alt:userData.avatarUrl.alt
                     }}
                 />
-                <GroupDisplayUserData>
+                <div className={styled.GroupDisplayUserData}>
                     <BoxDisplayUserData title={"Seguidores"} value={userData.followers} />
                     <BoxDisplayUserData title={"Repositórios"} value={userData.amountPublicRepos} />
-                </GroupDisplayUserData>
-                <Line/>
-                <ContentRepository>
+                </div>
+                <div className={styled.Line}/>
+                <div className={styled.ContentRepository}>
                     {dataRepositories.map((item)=>{
                         return (
                             <BoxDisplayUserRepositories
@@ -59,9 +53,9 @@ export const ScreenUser = async ({userData, dataRepositories, page}:ScreenUserTy
                             />
                         )
                     })}
-                </ContentRepository>
-            </Content>
+                </div>
+            </section>
             <Pagination amountPublicRepos={userData.amountPublicRepos } page={parseInt(page)}/>
-        </Wrapper>
+        </div>
     )
 }
