@@ -1,11 +1,9 @@
-'use client'
-
-import {Wrapper} from './styled'
+import styled from './styled.module.sass'
 
 export const LayoutBreakpoint = ({children}: { children:React.ReactNode }) => {
     return (
-        <Wrapper>
+        <div className={styled.Wrapper}>
             {children}
-        </Wrapper>
+        </div>
     )
 }

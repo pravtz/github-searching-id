@@ -1,8 +1,8 @@
 'use client'
 
-import {ButtonTitle, Content, GroupTitle, IconChevron, TitleMenu, Wrapper} from "@/components/MenuLine/styled";
 import {ChevronDown} from "lucide-react";
 import {useState} from "react";
+import styled from './styled.module.sass'
 
 type MenuLineType = {
     children:React.ReactNode,
@@ -14,18 +14,18 @@ type MenuLineType = {
 export const MenuLine = ({children, title, isEmpty, isStartOpen= false}: MenuLineType) => {
     const [open, setOpen] = useState<boolean>(isStartOpen)
     return (
-        <Wrapper isEmpty={isEmpty}>
-            <ButtonTitle onClick={()=> setOpen(!open)}>
-                <GroupTitle>
-                    <TitleMenu>{title}</TitleMenu>
-                    <IconChevron isTurned={!open}>
+        <section className={isEmpty ? styled["wrapper--isEmpty"] : styled.Wrapper}>
+            <button className={styled.ButtonTitle} onClick={()=> setOpen(!open)}>
+                <div className={styled.GroupTitle}>
+                    <h3 className={styled.TitleMenu}>{title}</h3>
+                    <div className={!open ? styled['IconChevron--isTurned'] : styled.IconChevron}>
                         <ChevronDown size={20} color="#787878" />
-                    </IconChevron>
-                </GroupTitle>
-            </ButtonTitle>
-            <Content isOpen={open}>
+                    </div>
+                </div>
+            </button>
+            <div className={open ? styled["Content--isOpen"] : styled.Content}>
                 {children}
-            </Content>
-        </Wrapper>
+            </div>
+        </section>
     )
 }

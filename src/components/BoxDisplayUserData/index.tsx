@@ -1,4 +1,4 @@
-import {Wrapper,Value,Title} from "@/components/BoxDisplayUserData/styled";
+import styled from './styled.module.sass'
 
 type BoxDisplayUserDataType = {
     title: string
@@ -7,9 +7,9 @@ type BoxDisplayUserDataType = {
 
 export const BoxDisplayUserData = ({title,value}:BoxDisplayUserDataType) => {
     return (
-        <Wrapper>
-            <Title>{title}</Title>
-            <Value>{value}</Value>
-        </Wrapper>
+        <section className={ styled.wrapper}>
+            <p className={styled.title}>{title}</p>
+            <p className={styled.value}>{value}</p>
+        </section>
     )
 }
