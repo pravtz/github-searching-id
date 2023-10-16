@@ -1,5 +1,6 @@
 {
   "name": "github-searching-id",
+  "description": "This is a simple application that aims to meet the need to search for GitHub users in a more practical and easy way.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
