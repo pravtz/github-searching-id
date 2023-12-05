@@ -5,30 +5,55 @@ import {BoxProfileUserType} from "@/components/BoxProfileUser";
 
 type userRecentContextType = {
     items: BoxProfileUserType[] | null
-    setItem: (items:BoxProfileUserType[] | null)=> void
+    SetItem: (item: BoxProfileUserType) => void
+
 }
 export const UserRecentContext = createContext<userRecentContextType | undefined>(undefined)
 
 export const LocalProvider = ({children}: { children: React.ReactNode }) => {
-    const [items,setItem] = useState<BoxProfileUserType[] | null>(null)
+    const [items,setItems] = useState<BoxProfileUserType[]>([])
 
-    useEffect(()=>{
-        const saveItems = localStorage.getItem('local')
-        if(saveItems){
-            setItem(JSON.parse(saveItems))
+    const SetItem = (item: BoxProfileUserType) => {
+        console.log("items: ",items,"length items: ",items.length, "items.indexOf(item)",items.indexOf(item))
+        if(items.length > 0){
+            if(items.length > 5){
+                items.shift()
+            }
+            console.log("items: ",items,"length items: ",items.length, "items.indexOf(item)",items.indexOf(item))
+
+            if(items.indexOf(item)<0){
+                setItems([...items,item])
+            }
+        }else{
+            setItems([item])
         }
-    },[])
-    useEffect(()=>{
-        if(items){
-            localStorage.setItem('local',JSON.stringify(items))
-        }
-    },[items])
+
+    }
+
+
+
+    // const getLocalStorage = () => {
+    //     const saveItems = localStorage.getItem('local')
+    //     if (saveItems) {
+    //         setItems(JSON.parse(saveItems))
+    //     }
+    //     return items
+    // }
+    //
+    //
+    // const setLocalStorage= (item:BoxProfileUserType | null)=>{
+    //     console.log("items esses são",items)
+    //     setItems([item])
+    //     localStorage.setItem('local',JSON.stringify(items))
+    // }
+
 
 
     return (
         <UserRecentContext.Provider value={{
             items,
-            setItem
+            SetItem
+
         }}>
             {children}
         </UserRecentContext.Provider>

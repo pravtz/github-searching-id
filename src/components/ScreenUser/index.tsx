@@ -1,5 +1,4 @@
 'use client'
-
 import styled from './styled.module.sass'
 import {NavigationLink} from "@/components/NavigationLink";
 import {BoxProfileUser} from "@/components/BoxProfileUser";
@@ -9,6 +8,8 @@ import {DataFullUserProfile} from "@/app/user/[...username]/page"
 import {RepositoriesDataType} from "@/services/api.github.com/getListRepositoriesUser";
 import {FormatDate} from "@/helper/FormatDate";
 import {Pagination} from "@/components/Pagination";
+import {useItemsLocalStorage} from "@/hooks/useItensLocalStorage";
+import {useCallback, useEffect, useState} from "react";
 
 type ScreenUserType = {
     userData: DataFullUserProfile
@@ -16,9 +17,16 @@ type ScreenUserType = {
     page: string
 }
 
-export const ScreenUser = async ({userData, dataRepositories, page}:ScreenUserType,) => {
+export const ScreenUser =  ({userData, dataRepositories, page}:ScreenUserType,) => {
+    const {items, SetItem} = useItemsLocalStorage()
 
-        localStorage.setItem('LOCAL',JSON.stringify([userData]))
+
+    useEffect(() => {
+        return SetItem(userData)
+    }, [userData]);
+    console.log("items",items)
+
+
 
     return (
         <div className={styled.Wrapper}>
